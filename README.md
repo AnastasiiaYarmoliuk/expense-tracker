@@ -1,25 +1,25 @@
-Expense Tracker (Калькулятор витрат)
+# Expense Tracker (Калькулятор витрат)
 
 Expense Tracker — це вебзастосунок на React.js, призначений для обліку щоденних фінансів. Проєкт дозволяє користувачу фіксувати доходи та витрати, автоматично розраховувати загальний баланс та переглядати історію транзакцій.
 
-Стек технологій:
-Framework: React.js(Vite)
-Мова: JavaScript(ES6+)
-Стилізація: CSS3
+# Стек технологій
+- Framework: React.js(Vite)
+- Мова: JavaScript(ES6+)
+- Стилізація: CSS3
 
-Інструкція з розгортання
+# Інструкція з розгортання
 Щоб запустити проєкт локально, виконайте наступні кроки:
 1. Клонуйте репозиторій
-git clone https://github.com/AnastsiiaYarmoliuk/expense-tracker.git
+`git clone https://github.com/AnastsiiaYarmoliuk/expense-tracker.git`
 
 2. Перейдіть у папку проєкту
-cd expense-tracker
+`cd expense-tracker`
 
 3. Встановіть залежності
-npm install
+`npm install`
 
 4. Запустіть сервер для розробки
-npm run dev
+`npm run dev`
 
 5. Відкрийте додаток
 Перейдіть за посиланням, яке з'явиться в терміналі (зазвичай http://localhost:5173).
