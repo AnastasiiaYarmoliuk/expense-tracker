@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './components/Header'
+import TransactionList from './components/TransactionList'
 
 function App() {
 
@@ -25,6 +26,8 @@ function App() {
           <p className="money minus">-0.00 грн</p>
         </div>
       </div>
+
+      <TransactionList />
     </div>
   );
 }
