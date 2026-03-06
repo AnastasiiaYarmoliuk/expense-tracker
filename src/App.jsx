@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="container">
-      <Header/>
+      <Header title="My Budget App"/>
 
       <div className="balance-container">
         <h4>Ваш баланс</h4>

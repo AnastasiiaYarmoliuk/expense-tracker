@@ -1,7 +1,7 @@
-export default function Header() {
+export default function Header({ title }) {
   return (
     <header>
-      <h1>Expense Tracker</h1>
+      <h1>{title}</h1>
     </header>
   );
 }
