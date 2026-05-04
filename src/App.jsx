@@ -1,19 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Header from './components/Header'
-import SummaryCard from './components/SummaryCard'
-import Button from './components/Button'
-import Modal from './components/Modal'
-import TransactionItem from './components/TransactionItem'
+import { useState } from 'react';
+import './App.css';
+import Header from './components/Header';
+import SummaryCard from './components/SummaryCard';
+import Button from './components/Button';
+import Modal from './components/Modal';
+import TransactionItem from './components/TransactionItem';
 
 import {
   calculateIncome,
   calculateExpense,
   calculateSavings,
   calculateBalance,
-} from "./utils/finance";
+} from './utils/finance';
 
 function App() {
   const [transactions, setTransactions] = useState([]);
@@ -28,12 +26,11 @@ function App() {
     setTransactions(transactions.filter((t) => t.id !== id));
   };
 
-
   // Логіка підрахунків (залишається такою ж)
   const income = calculateIncome(transactions);
   const expense = calculateExpense(transactions);
   const savings = calculateSavings(transactions);
-  
+
   const balance = calculateBalance(income, expense, savings);
 
   return (
@@ -41,15 +38,10 @@ function App() {
       <Header title="Expense Tracker" />
 
       <div className="summary-grid">
-        <SummaryCard
-          title="Ваш баланс"
-          amount={balance}
-          type="balance"
-        />
+        <SummaryCard title="Ваш баланс" amount={balance} type="balance" />
         <SummaryCard title="Надходження" amount={income} type="income" />
         <SummaryCard title="Витрати" amount={expense} type="expense" />
-        <SummaryCard title="Збереження" amount={savings} type="savings"
-        />
+        <SummaryCard title="Збереження" amount={savings} type="savings" />
       </div>
 
       {/* Наша кнопка */}
@@ -62,19 +54,20 @@ function App() {
       <div className="history-container">
         <ul className="transaction-list">
           {transactions.map((t) => (
-            <TransactionItem key={t.id} transaction={t} onDelete={deleteTransaction} />
+            <TransactionItem
+              key={t.id}
+              transaction={t}
+              onDelete={deleteTransaction}
+            />
           ))}
         </ul>
       </div>
 
       {isModalOpen && (
-        <Modal
-          onAdd={addTransaction}
-          onClose={() => setIsModalOpen(false)}
-        />
+        <Modal onAdd={addTransaction} onClose={() => setIsModalOpen(false)} />
       )}
     </div>
   );
 }
 
-export default App
+export default App;

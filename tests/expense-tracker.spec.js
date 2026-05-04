@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test("Успішне додавання нової витрати", async ({ page }) => {
   // Перехід на сайт
-  await page.goto("http://localhost:5174");
+  await page.goto("http://localhost:5173");
 
   // Натискання кнопки "+ Додати операцію"
   await page.click("text=+ Додати операцію");
@@ -28,7 +28,7 @@ test("Успішне додавання нової витрати", async ({ pag
 test("Валідація: неможливо додати транзакцію з порожніми полями", async ({
   page,
 }) => {
-  await page.goto("http://localhost:5174"); 
+  await page.goto("http://localhost:5173"); 
 
   await page.click("text=+ Додати операцію");
 

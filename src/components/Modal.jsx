@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const Modal = ({ onClose, onAdd }) => {
-  const [text, setText] = useState("");
-  const [amount, setAmount] = useState("");
-  const [type, setType] = useState("expense");
+  const [text, setText] = useState('');
+  const [amount, setAmount] = useState('');
+  const [type, setType] = useState('expense');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!text || !amount) {
-      alert("Заповність всі поля!");
+      alert('Заповність всі поля!');
       return;
     }
 

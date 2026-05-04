@@ -1,6 +1,6 @@
 const TransactionItem = ({ transaction, onDelete }) => {
-  const sign = transaction.type === "income" ? "+" : "-";
-  const cls = transaction.type === "income" ? "plus" : "minus";
+  const sign = transaction.type === 'income' ? '+' : '-';
+  const cls = transaction.type === 'income' ? 'plus' : 'minus';
 
   return (
     <li className={cls}>
