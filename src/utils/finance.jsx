@@ -14,6 +14,6 @@ export const calculateSavings = (transactions) =>
     .reduce((acc, t) => acc + t.amount, 0);
 
 // Змінено логіку балансу для "зламаного" тесту
-export const calculateBalance = (income, expense, savings) => income + expense - savings;
+export const calculateBalance = (income, expense, savings) => income - expense - savings;
 
 export const formatCurrency = (amount) => `${amount.toFixed(2)} грн`;
