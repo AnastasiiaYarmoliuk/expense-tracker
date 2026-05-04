@@ -7,7 +7,10 @@ const Modal = ({ onClose, onAdd }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!text || !amount) return;
+    if (!text || !amount) {
+      alert("Заповність всі поля!");
+      return;
+    }
 
     onAdd({
       id: Math.floor(Math.random() * 1000000),
@@ -37,12 +40,13 @@ const Modal = ({ onClose, onAdd }) => {
           <select value={type} onChange={(e) => setType(e.target.value)}>
             <option value="expense">Витрата</option>
             <option value="income">Надходження</option>
+            <option value="savings">Збереження</option>
           </select>
           <div className="modal-btns">
-            <button type="button" onClick={onClose} className="cancel-btn">
+            <button type="button" onClick={onClose} className="btn cancel-btn">
               Скасувати
             </button>
-            <button type="submit" className="submit-btn">
+            <button type="submit" className="btn submit-btn">
               Додати
             </button>
           </div>

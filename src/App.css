@@ -1,8 +1,9 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+  color: #f5f5f5;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -41,6 +42,11 @@
   color: #888;
 }
 
+.btn {
+  background-color: #222;
+  color: #f5f5f5;
+}
+
 /* Сітка блоків */
 .summary-grid {
   display: grid;
@@ -59,13 +65,13 @@
 }
 
 .income h4 {
-  color: #2ecc71;
+  color: #a9e5c2;
 }
 .expense h4 {
-  color: #e74c3c;
+  color: #dfa49d;
 }
 .savings h4 {
-  color: #3498db;
+  color: #98c5e3;
 }
 
 /* Кнопка */
@@ -81,8 +87,54 @@
   margin-bottom: 20px;
 }
 
+.history-container {
+  max-height: 260px; 
+  overflow-y: auto;  
+}
+
+.history-container::-webkit-scrollbar-thumb {
+  background: #444; /* Колір повзунка */
+  border-radius: 10px;
+}
+
+.transaction-list {
+  margin: 0 auto;
+}
+
 li {
+  display: flex;
+  justify-content: space-between;
   list-style: none;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.plus span {
+  color: #2ecc71;
+}
+.minus span {
+  color: #e74c3c;
+}
+
+.trans-part {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-btn {
+  display: flex;            /* Включаємо флексбокс */
+  justify-content: center;  /* Центруємо по горизонталі */
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin-left: 12px;
+  background-color: transparent;
+  color: #f5f5f5;
+  border-radius: 50%;
+  line-height: 1;           /* Скидаємо висоту рядка */
+  font-size: 14px; 
 }
 
 /* Модальне вікно */
