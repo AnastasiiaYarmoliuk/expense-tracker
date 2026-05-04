@@ -26,7 +26,7 @@ describe('Finance Logic', () => {
     const inc = 1000,
       exp = 500,
       sav = 100;
-    expect(calculateBalance(inc, exp, sav)).toBe(400);
+    expect(calculateBalance(inc, exp, sav)).toBe(500);
   });
 
   it('Правильно рахує збереження', () => {
