@@ -95,6 +95,11 @@
   overflow-y: auto;
 }
 
+.history-container::-webkit-scrollbar-track {
+  background: #1a1a1a; /* Колір доріжки */
+  border-radius: 10px;
+}
+
 .history-container::-webkit-scrollbar-thumb {
   background: #444; /* Колір повзунка */
   border-radius: 10px;
