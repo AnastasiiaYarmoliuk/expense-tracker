@@ -1,35 +1,73 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import Header from './components/Header';
+import SummaryCard from './components/SummaryCard';
+import Button from './components/Button';
+import Modal from './components/Modal';
+import TransactionItem from './components/TransactionItem';
+
+import {
+  calculateIncome,
+  calculateExpense,
+  calculateSavings,
+  calculateBalance,
+} from './utils/finance';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [transactions, setTransactions] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const addTransaction = (newTr) => {
+    setTransactions([newTr, ...transactions]);
+    setIsModalOpen(false); // Ось цей рядок закриває модалку
+  };
+
+  const deleteTransaction = (id) => {
+    setTransactions(transactions.filter((t) => t.id !== id));
+  };
+
+  // Логіка підрахунків (залишається такою ж)
+  const income = calculateIncome(transactions);
+  const expense = calculateExpense(transactions);
+  const savings = calculateSavings(transactions);
+
+  const balance = calculateBalance(income, expense, savings);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container">
+      <Header title="Expense Tracker" />
+
+      <div className="summary-grid">
+        <SummaryCard title="Ваш баланс" amount={balance} type="balance" />
+        <SummaryCard title="Надходження" amount={income} type="income" />
+        <SummaryCard title="Витрати" amount={expense} type="expense" />
+        <SummaryCard title="Збереження" amount={savings} type="savings" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      {/* Наша кнопка */}
+      <Button
+        label="+ Додати операцію"
+        onClick={() => setIsModalOpen(true)}
+        variant="main"
+      />
+      <h3>Історія транзакцій</h3>
+      <div className="history-container">
+        <ul className="transaction-list">
+          {transactions.map((t) => (
+            <TransactionItem
+              key={t.id}
+              transaction={t}
+              onDelete={deleteTransaction}
+            />
+          ))}
+        </ul>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      {isModalOpen && (
+        <Modal onAdd={addTransaction} onClose={() => setIsModalOpen(false)} />
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;

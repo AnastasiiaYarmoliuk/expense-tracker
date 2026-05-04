@@ -1,8 +1,9 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+  color: #f5f5f5;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -33,10 +34,151 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
-
 .read-the-docs {
   color: #888;
+}
+
+.env-badge {
+  color: #3498db;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+}
+
+.btn {
+  background-color: #222;
+  color: #f5f5f5;
+}
+
+/* Сітка блоків */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.card {
+  background: #222;
+  min-height: 120px;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.income h4 {
+  color: #a9e5c2;
+}
+.expense h4 {
+  color: #dfa49d;
+}
+.savings h4 {
+  color: #98c5e3;
+}
+
+/* Кнопка */
+.add-btn-main {
+  width: 100%;
+  padding: 12px;
+  background: #3498db;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+/* Історія транзакцій */
+.history-container {
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.history-container::-webkit-scrollbar-track {
+  background: #1a1a1a; /* Колір доріжки */
+  border-radius: 10px;
+}
+
+.history-container::-webkit-scrollbar-thumb {
+  background: #444; /* Колір повзунка */
+  border-radius: 10px;
+}
+
+.transaction-list {
+  margin: 0 auto;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.plus span {
+  color: #2ecc71;
+}
+.minus span {
+  color: #e74c3c;
+}
+
+.trans-part {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-btn {
+  display: flex; /* Включаємо флексбокс */
+  justify-content: center; /* Центруємо по горизонталі */
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin-left: 12px;
+  background-color: transparent;
+  color: #f5f5f5;
+  border-radius: 50%;
+  line-height: 1; /* Скидаємо висоту рядка */
+  font-size: 14px;
+}
+
+/* Модальне вікно */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #2a2a2a;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #111;
+  border: 1px solid #444;
+  color: white;
+  border-radius: 5px;
+}
+
+.modal-btns {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
