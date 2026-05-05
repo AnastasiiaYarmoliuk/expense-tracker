@@ -3,7 +3,7 @@
 
 Expense Tracker — це вебзастосунок на React.js, призначений для обліку щоденних фінансів. Проєкт дозволяє користувачу фіксувати доходи та витрати, автоматично розраховувати загальний баланс та переглядати історію транзакцій.
 
-URL: https://expense-tracker-anastasiia-yarmoliuk.vercel.app/
+URL: https://expense-tracker-six-chi-46.vercel.app/
 
 # Стек технологій
 - Framework: React.js(Vite)
