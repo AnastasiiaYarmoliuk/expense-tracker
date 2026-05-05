@@ -1,3 +1,4 @@
+[![CI/CD Pipeline](https://github.com/AnastasiiaYarmoliuk/expense-tracker/actions/workflows/main.yml/badge.svg)](https://github.com/AnastasiiaYarmoliuk/expense-tracker/actions/workflows/main.yml)
 # Expense Tracker (Калькулятор витрат)
 
 Expense Tracker — це вебзастосунок на React.js, призначений для обліку щоденних фінансів. Проєкт дозволяє користувачу фіксувати доходи та витрати, автоматично розраховувати загальний баланс та переглядати історію транзакцій.
