@@ -5,6 +5,7 @@ import SummaryCard from './components/SummaryCard';
 import Button from './components/Button';
 import Modal from './components/Modal';
 import TransactionItem from './components/TransactionItem';
+import posthog from 'posthog-js';
 
 import {
   calculateIncome,
