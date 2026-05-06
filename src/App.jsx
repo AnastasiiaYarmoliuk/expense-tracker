@@ -5,6 +5,7 @@ import SummaryCard from './components/SummaryCard';
 import Button from './components/Button';
 import Modal from './components/Modal';
 import TransactionItem from './components/TransactionItem';
+import posthog from 'posthog-js';
 
 import {
   calculateIncome,
@@ -19,11 +20,21 @@ function App() {
 
   const addTransaction = (newTr) => {
     setTransactions([newTr, ...transactions]);
-    setIsModalOpen(false); // Ось цей рядок закриває модалку
+    setIsModalOpen(false); 
+
+    posthog.capture('transaction_created', {
+      amount: newTr.amount,
+      type: newTr.type, 
+      category: newTr.text,
+    });
   };
 
   const deleteTransaction = (id) => {
     setTransactions(transactions.filter((t) => t.id !== id));
+
+    posthog.capture('transaction_deleted', {
+      timestamp: new Date().toISOString(),
+    });
   };
 
   // Логіка підрахунків (залишається такою ж)
