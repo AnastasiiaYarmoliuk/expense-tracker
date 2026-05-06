@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
 import SummaryCard from './components/SummaryCard';
@@ -17,6 +17,8 @@ import {
 function App() {
   const [transactions, setTransactions] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showSavings, setShowSavings] = useState(false);
+  
 
   const addTransaction = (newTr) => {
     setTransactions([newTr, ...transactions]);
@@ -37,6 +39,17 @@ function App() {
     });
   };
 
+  useEffect(() => {
+      // Очікування, поки PostHog завантажить усі прапорці
+      posthog.onFeatureFlags(() => {
+        if (posthog.isFeatureEnabled('show-savings-card')) {
+          setShowSavings(true);
+        } else {
+          setShowSavings(false);
+        }
+      });
+  }, []);
+  
   // Логіка підрахунків (залишається такою ж)
   const income = calculateIncome(transactions);
   const expense = calculateExpense(transactions);
@@ -52,7 +65,10 @@ function App() {
         <SummaryCard title="Ваш баланс" amount={balance} type="balance" />
         <SummaryCard title="Надходження" amount={income} type="income" />
         <SummaryCard title="Витрати" amount={expense} type="expense" />
-        <SummaryCard title="Збереження" amount={savings} type="savings" />
+        
+        {showSavings && (
+          <SummaryCard title="Збереження" amount={savings} type="savings" />
+        )}
       </div>
 
       {/* Наша кнопка */}
