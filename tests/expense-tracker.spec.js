@@ -10,7 +10,7 @@ test("Успішне додавання нової витрати", async ({ pag
   // Заповнення форми в модальному вікні
   await page.fill('input[placeholder*="Назва"]', "Купівля кави");
   await page.fill('input[placeholder*="Сума"]', "80");
-  await page.selectOption("select", "expense"); // обираємо тип "Витрата"
+  await page.selectOption("select", "expense"); 
 
   // Натискання "Додати" (це має закрити модалку)
   await page.click("button.submit-btn");

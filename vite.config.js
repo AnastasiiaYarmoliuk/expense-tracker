@@ -5,9 +5,20 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   test: {
-    environment: "jsdom",
+    environment: 'jsdom',
     globals: true,
-    setupFiles: "./src/setupTests.js",
-    exclude: ["node_modules", "dist", "tests/**"],
+    setupFiles: './src/setupTests.js',
+    exclude: ['node_modules', 'dist', 'tests/**'],
+  },
+
+  server: {
+    proxy: {
+      '/ingest': {
+        target: 'https://eu.i.posthog.com', // Переконайся, що тут саме EU, якщо ти на європейському сервері
+        changeOrigin: true,
+        // Ми прибираємо /ingest з початку, але залишаємо все інше
+        rewrite: (path) => path.replace(/^\/ingest/, ''),
+      },
+    },
   },
 });

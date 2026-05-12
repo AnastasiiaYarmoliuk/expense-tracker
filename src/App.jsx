@@ -6,6 +6,7 @@ import Button from './components/Button';
 import Modal from './components/Modal';
 import TransactionItem from './components/TransactionItem';
 import posthog from 'posthog-js';
+import * as Sentry from '@sentry/react';
 
 import {
   calculateIncome,
@@ -17,7 +18,7 @@ import {
 function App() {
   const [transactions, setTransactions] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [showSavings, setShowSavings] = useState(false);
+  const [showSavings, setShowSavings] = useState(true);
   
 
   const addTransaction = (newTr) => {
@@ -49,7 +50,21 @@ function App() {
         }
       });
   }, []);
+
+  const handleBreakWorld = () => {
+    throw new Error(`Sentry Test Error: ${new Date().toLocaleTimeString()}`);
+  };
   
+  useEffect(() => {
+    // Встановлюємо дані користувача (імітація входу в акаунт)
+    Sentry.setUser({
+      id: '204',
+      email: 'anastasiia.y@lpnu.ua', // вкажи свою пошту
+      username: 'Anastasiia Yarmoliuk',
+      ip_address: '{{auto}}', // Sentry автоматично підтягне IP
+    });
+  }, []);
+
   // Логіка підрахунків (залишається такою ж)
   const income = calculateIncome(transactions);
   const expense = calculateExpense(transactions);
@@ -65,7 +80,7 @@ function App() {
         <SummaryCard title="Ваш баланс" amount={balance} type="balance" />
         <SummaryCard title="Надходження" amount={income} type="income" />
         <SummaryCard title="Витрати" amount={expense} type="expense" />
-        
+
         {showSavings && (
           <SummaryCard title="Збереження" amount={savings} type="savings" />
         )}
@@ -77,6 +92,14 @@ function App() {
         onClick={() => setIsModalOpen(true)}
         variant="main"
       />
+
+      <button
+        onClick={handleBreakWorld}
+        style={{ marginTop: '20px', opacity: 0.5 }}
+      >
+        Викликати помилку для Sentry
+      </button>
+
       <h3>Історія транзакцій</h3>
       <div className="history-container">
         <ul className="transaction-list">
